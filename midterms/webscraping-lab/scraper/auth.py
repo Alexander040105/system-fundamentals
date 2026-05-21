@@ -1,98 +1,174 @@
 from __future__ import annotations
 
-from bs4 import BeautifulSoup
-import requests
-from urllib.parse import urljoin, urlparse
+from pathlib import Path
 
-from .utils import Config, sleep_for_crawl_delay
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+
+from .config import Config
+from .utils import wait_for_element
 
 
-def login(session: requests.Session, config: Config) -> None:
-    if not config.login_url:
-        raise ValueError("STARLINK_LOGIN_URL is required.")
+def login(driver: WebDriver, config: Config, timeout: int = 30) -> None:
+    """Log in to Starlink using the configured credentials."""
 
-    login_page_url = infer_login_page_url(config.login_url)
-    login_page = session.get(login_page_url, timeout=30)
-    login_page.raise_for_status()
+    driver.get(config.login_url)
 
-    csrf_name, csrf_token = extract_csrf_token(login_page.text)
-    form_action, form_method = extract_form_target(login_page.text, config.login_url)
+    WebDriverWait(driver, timeout).until(
+        lambda d: d.execute_script("return document.readyState") == "complete"
+    )
 
-    payload = {
-        config.email_field: config.email,
-        config.password_field: config.password,
-    }
-
-    if csrf_token:
-        payload[csrf_name or config.csrf_field] = csrf_token
-
-    sleep_for_crawl_delay(config, "before login request")
-
-    post_url = config.auth_url or form_action or config.login_url
-    if form_method == "get":
-        response = session.get(post_url, params=payload, timeout=30)
-    else:
-        response = session.post(post_url, data=payload, timeout=30)
-
-    if response.status_code == 405 and form_method != "get":
-        response = session.get(post_url, params=payload, timeout=30)
-
-    response.raise_for_status()
-
-    if not is_login_successful(response.text, session):
-        raise RuntimeError(
-            "Login failed. Inspect the login request in your browser and set "
-            "STARLINK_AUTH_URL and field names if needed."
+    if config.manual_login:
+        print(
+            "Manual login enabled. Complete login in the browser. "
+            "Waiting until the URL contains /account..."
         )
+        WebDriverWait(driver, timeout * 6).until(
+            lambda d: "/account" in d.current_url
+        )
+        WebDriverWait(driver, timeout).until(
+            lambda d: d.execute_script("return document.readyState") == "complete"
+        )
+        return
 
-
-def extract_csrf_token(html: str) -> tuple[str | None, str | None]:
-    soup = BeautifulSoup(html, "html.parser")
-
-    selectors = [
-        "input[name=csrf]",
-        "input[name=_csrf]",
-        "input[name=csrf_token]",
-        "input[name=authenticity_token]",
+    # Wait for the login form fields to appear.
+    email_selectors = [
+        config.email_selector,
+        "[data-testid='email'] input",
+        "input[name='email']",
+        "input[name='username']",
+        "input[type='email']",
+        "input[autocomplete='username']",
+    ]
+    password_selectors = [
+        config.password_selector,
+        "[data-testid='password'] input",
+        "input[name='password']",
+        "input[type='password']",
+        "input[autocomplete='current-password']",
     ]
 
-    for selector in selectors:
-        field = soup.select_one(selector)
-        if field and field.get("value"):
-            return field.get("name"), field.get("value")
+    def save_snapshot(name: str) -> Path:
+        output_dir = Path("output")
+        output_dir.mkdir(parents=True, exist_ok=True)
+        snapshot_path = output_dir / name
+        snapshot_path.write_text(driver.page_source, encoding="utf-8")
+        return snapshot_path
 
-    meta = soup.select_one("meta[name=csrf-token], meta[name=csrf_token]")
-    if meta and meta.get("content"):
-        return meta.get("name"), meta.get("content")
+    try:
+        # Ensure the login form is present before selecting inputs.
+        WebDriverWait(driver, timeout).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, "form"))
+        )
+        email_input = wait_for_element(
+            driver,
+            email_selectors,
+            timeout=timeout,
+            visible=False,
+            clickable=False,
+        )
+    except Exception as exc:
+        snapshot_path = save_snapshot("login_page.html")
+        raise RuntimeError(
+            f"Login selectors not found. Saved HTML snapshot to: {snapshot_path}"
+        ) from exc
 
-    return None, None
+    if email_input.is_enabled():
+        email_input.clear()
+        email_input.send_keys(config.email)
+    # Click submit (Next) after email.
+    if email_input.is_enabled():
+        try:
+            submit_button = wait_for_element(
+                driver,
+                [config.submit_selector, "button[type='submit']", "button[name='login']"],
+                timeout=timeout,
+                visible=True,
+            )
+            submit_button.click()
+        except Exception:
+            email_input.send_keys(Keys.ENTER)
 
+    # Wait for password step or validation error.
+    try:
+        WebDriverWait(driver, timeout).until(
+            lambda d: d.find_elements(By.CSS_SELECTOR, "[data-testid='password'] input")
+            or d.find_elements(By.CSS_SELECTOR, "[data-testid='form-validation-summary']")
+        )
+    except Exception:
+        snapshot_path = save_snapshot("login_after_next.html")
+        raise RuntimeError(
+            "Login did not advance to the password step. "
+            f"Saved HTML snapshot to: {snapshot_path}"
+        )
 
-def extract_form_target(html: str, base_url: str) -> tuple[str | None, str]:
-    soup = BeautifulSoup(html, "html.parser")
-    form = soup.find("form")
-    if not form:
-        return None, "post"
+    if driver.find_elements(By.CSS_SELECTOR, "[data-testid='form-validation-summary']"):
+        snapshot_path = save_snapshot("login_validation_error.html")
+        if config.manual_login:
+            print(
+                "Login validation error detected. "
+                "Solve any captcha or wait for the error to clear in the browser, "
+                "then press Enter to continue."
+            )
+            input()
+        else:
+            raise RuntimeError(
+                "Login showed a validation error after submitting email. "
+                f"Saved HTML snapshot to: {snapshot_path}"
+            )
 
-    action = form.get("action")
-    method = (form.get("method") or "post").lower()
-    if not action:
-        return None, method
+    # Wait for password field to appear (two-step flow) or already present.
+    try:
+        password_input = wait_for_element(
+            driver,
+            password_selectors,
+            timeout=timeout,
+            visible=True,
+            clickable=True,
+        )
+    except Exception:
+        try:
+            password_input = wait_for_element(
+                driver,
+                password_selectors,
+                timeout=timeout,
+                visible=False,
+                clickable=False,
+            )
+        except Exception as exc:
+            snapshot_path = save_snapshot("login_password_step.html")
+            raise RuntimeError(
+                f"Password selectors not found. Saved HTML snapshot to: {snapshot_path}"
+            ) from exc
+    password_input.clear()
+    password_input.send_keys(config.password)
 
-    return urljoin(base_url, action), method
+    # Click submit or press Enter as a fallback.
+    try:
+        submit_button = wait_for_element(
+            driver,
+            [config.submit_selector, "button[type='submit']", "button[name='login']"],
+            timeout=timeout,
+            visible=True,
+        )
+        submit_button.click()
+    except Exception:
+        password_input.send_keys(Keys.ENTER)
 
+    # Wait for authentication to complete by URL change or usage page elements.
+    WebDriverWait(driver, timeout).until(
+        lambda d: d.current_url != config.login_url
+    )
 
-def infer_login_page_url(login_url: str) -> str:
-    parsed = urlparse(login_url)
-    if "/auth/login" in parsed.path:
-        base = f"{parsed.scheme}://{parsed.netloc}"
-        return f"{base}/account/login"
-    return login_url
+    # Some flows redirect through intermediate pages; wait for a stable document ready state.
+    WebDriverWait(driver, timeout).until(
+        lambda d: d.execute_script("return document.readyState") == "complete"
+    )
 
-
-def is_login_successful(html: str, session: requests.Session) -> bool:
-    if session.cookies:
-        return True
-
-    html_lower = html.lower()
-    return "account" in html_lower or "logout" in html_lower
+    # Optional: ensure we are authenticated by checking for a logged-in cookie or element.
+    WebDriverWait(driver, timeout).until_not(
+        EC.presence_of_element_located((By.CSS_SELECTOR, "input[type='password']"))
+    )
