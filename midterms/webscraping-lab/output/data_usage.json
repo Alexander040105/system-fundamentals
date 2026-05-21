@@ -735,7 +735,7 @@
             "pricePerGB": 0,
             "usageLimitGB": 0,
             "overageAmountGB": 0,
-            "consumedAmountGB": 97.44,
+            "consumedAmountGB": 97.67,
             "overagePrice": 0,
             "productId": null,
             "dataOverageType": 0,
@@ -744,7 +744,7 @@
         ],
         "startDate": "2026-05-17T00:00:00+00:00",
         "endDate": "2026-06-17T00:00:00+00:00",
-        "totalAmountGB": 97.44208465999999,
+        "totalAmountGB": 97.666954049,
         "dailyData": [
           [
             45.093977717
@@ -759,7 +759,7 @@
             18.105064329
           ],
           [
-            8.390616962
+            8.615486351
           ],
           [
             0

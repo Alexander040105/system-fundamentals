@@ -45,9 +45,9 @@ def _default_binary_path() -> str:
 
 
 def build_driver() -> tuple[webdriver.Chrome, bool]:
-    debug_port = os.getenv("CHROME_DEBUG_PORT", "").strip()
+    debug_port = os.getenv("CHROME_DEBUG_PORT", "").strip() or "9222"
     debug_host = os.getenv("CHROME_DEBUG_HOST", "127.0.0.1").strip() or "127.0.0.1"
-    chromedriver_version = os.getenv("CHROMEDRIVER_VERSION", "").strip()
+    chromedriver_version = os.getenv("CHROMEDRIVER_VERSION", "").strip() or "148"
 
     if debug_port:
         options = webdriver.ChromeOptions()
