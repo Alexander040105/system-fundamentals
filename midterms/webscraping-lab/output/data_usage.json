@@ -1,0 +1,866 @@
+{
+  "content": {
+    "dataBuckets": [
+      {
+        "name": "Residential Data",
+        "style": 0,
+        "color": 0
+      }
+    ],
+    "overageProductSummaryLine": null,
+    "billingCyclesAnnotated": [
+      {
+        "dataUsageSummaryLines": [
+          {
+            "isOptedIntoOverage": false,
+            "name": "",
+            "description": "",
+            "dataBucketIndex": 0,
+            "isoCurrencyCode": "PHP",
+            "overageLineDeactivatedDate": null,
+            "summaryLineType": 6,
+            "restricted": 0,
+            "unrestricted": 0,
+            "pricePerGB": 0,
+            "usageLimitGB": 0,
+            "overageAmountGB": 0,
+            "consumedAmountGB": 482.05,
+            "overagePrice": 0,
+            "productId": null,
+            "dataOverageType": 0,
+            "activeFrom": "2025-11-17T00:00:00+00:00"
+          }
+        ],
+        "startDate": "2025-11-17T00:00:00+00:00",
+        "endDate": "2025-12-17T00:00:00+00:00",
+        "totalAmountGB": 482.05343983700004,
+        "dailyData": [
+          [
+            17.486273079
+          ],
+          [
+            13.308194659
+          ],
+          [
+            6.946531524
+          ],
+          [
+            12.140051006
+          ],
+          [
+            10.101442714000001
+          ],
+          [
+            6.609595293
+          ],
+          [
+            17.297372183
+          ],
+          [
+            23.191345723
+          ],
+          [
+            13.307385523
+          ],
+          [
+            18.743551044
+          ],
+          [
+            13.595761925000001
+          ],
+          [
+            15.837246245
+          ],
+          [
+            11.482320088000002
+          ],
+          [
+            22.072843943
+          ],
+          [
+            12.31869134
+          ],
+          [
+            14.360615184
+          ],
+          [
+            14.594735749
+          ],
+          [
+            13.052808132
+          ],
+          [
+            15.154990534
+          ],
+          [
+            18.551238081
+          ],
+          [
+            19.606090488
+          ],
+          [
+            14.352544968
+          ],
+          [
+            10.178859849
+          ],
+          [
+            13.860284944
+          ],
+          [
+            9.752878917999999
+          ],
+          [
+            13.987016467
+          ],
+          [
+            22.320919485
+          ],
+          [
+            44.743026029
+          ],
+          [
+            33.21403803
+          ],
+          [
+            9.88478669
+          ]
+        ]
+      },
+      {
+        "dataUsageSummaryLines": [
+          {
+            "isOptedIntoOverage": false,
+            "name": "",
+            "description": "",
+            "dataBucketIndex": 0,
+            "isoCurrencyCode": "PHP",
+            "overageLineDeactivatedDate": null,
+            "summaryLineType": 6,
+            "restricted": 0,
+            "unrestricted": 0,
+            "pricePerGB": 0,
+            "usageLimitGB": 0,
+            "overageAmountGB": 0,
+            "consumedAmountGB": 546.51,
+            "overagePrice": 0,
+            "productId": null,
+            "dataOverageType": 0,
+            "activeFrom": "2025-12-17T00:00:00+00:00"
+          }
+        ],
+        "startDate": "2025-12-17T00:00:00+00:00",
+        "endDate": "2026-01-17T00:00:00+00:00",
+        "totalAmountGB": 546.505478711,
+        "dailyData": [
+          [
+            18.50108881
+          ],
+          [
+            22.221914275
+          ],
+          [
+            14.405763068
+          ],
+          [
+            14.147822048
+          ],
+          [
+            24.98833773
+          ],
+          [
+            17.239871141000002
+          ],
+          [
+            20.406890359000002
+          ],
+          [
+            18.895186752
+          ],
+          [
+            12.046963023
+          ],
+          [
+            25.767574462
+          ],
+          [
+            22.548574749
+          ],
+          [
+            20.405787856
+          ],
+          [
+            19.504378718
+          ],
+          [
+            35.415201602
+          ],
+          [
+            23.789441172
+          ],
+          [
+            15.522662736
+          ],
+          [
+            17.912414348
+          ],
+          [
+            33.693400431
+          ],
+          [
+            26.114273468
+          ],
+          [
+            21.237701695000002
+          ],
+          [
+            20.629418898
+          ],
+          [
+            8.098446093
+          ],
+          [
+            19.954781727
+          ],
+          [
+            13.683606315999999
+          ],
+          [
+            15.549129633
+          ],
+          [
+            9.011979372
+          ],
+          [
+            7.099265274
+          ],
+          [
+            10.510167311
+          ],
+          [
+            8.308762836
+          ],
+          [
+            6.38373892
+          ],
+          [
+            2.5109338880000003
+          ]
+        ]
+      },
+      {
+        "dataUsageSummaryLines": [
+          {
+            "isOptedIntoOverage": false,
+            "name": "",
+            "description": "",
+            "dataBucketIndex": 0,
+            "isoCurrencyCode": "PHP",
+            "overageLineDeactivatedDate": null,
+            "summaryLineType": 6,
+            "restricted": 0,
+            "unrestricted": 0,
+            "pricePerGB": 0,
+            "usageLimitGB": 0,
+            "overageAmountGB": 0,
+            "consumedAmountGB": 218.04,
+            "overagePrice": 0,
+            "productId": null,
+            "dataOverageType": 0,
+            "activeFrom": "2026-01-17T00:00:00+00:00"
+          }
+        ],
+        "startDate": "2026-01-17T00:00:00+00:00",
+        "endDate": "2026-02-17T00:00:00+00:00",
+        "totalAmountGB": 218.03832859399995,
+        "dailyData": [
+          [
+            12.456681531
+          ],
+          [
+            5.86662837
+          ],
+          [
+            7.364195405
+          ],
+          [
+            7.3277513579999995
+          ],
+          [
+            6.533994505
+          ],
+          [
+            14.345516894000001
+          ],
+          [
+            8.694565454000001
+          ],
+          [
+            12.071834201000001
+          ],
+          [
+            13.356644448
+          ],
+          [
+            7.901013621000001
+          ],
+          [
+            12.151333603
+          ],
+          [
+            5.940856445
+          ],
+          [
+            7.090575025
+          ],
+          [
+            8.774589393
+          ],
+          [
+            14.294508192999999
+          ],
+          [
+            4.630240819
+          ],
+          [
+            6.857662230000001
+          ],
+          [
+            5.742746735
+          ],
+          [
+            4.361197476
+          ],
+          [
+            4.029718989
+          ],
+          [
+            3.0430167089999998
+          ],
+          [
+            9.119861849000001
+          ],
+          [
+            2.3732309039999997
+          ],
+          [
+            0.8849552829999999
+          ],
+          [
+            1.217558312
+          ],
+          [
+            7.832342162
+          ],
+          [
+            4.118984236
+          ],
+          [
+            8.814152455
+          ],
+          [
+            4.1859029240000005
+          ],
+          [
+            2.3850695450000003
+          ],
+          [
+            4.27099952
+          ]
+        ]
+      },
+      {
+        "dataUsageSummaryLines": [
+          {
+            "isOptedIntoOverage": false,
+            "name": "",
+            "description": "",
+            "dataBucketIndex": 0,
+            "isoCurrencyCode": "PHP",
+            "overageLineDeactivatedDate": null,
+            "summaryLineType": 6,
+            "restricted": 0,
+            "unrestricted": 0,
+            "pricePerGB": 0,
+            "usageLimitGB": 0,
+            "overageAmountGB": 0,
+            "consumedAmountGB": 91.21,
+            "overagePrice": 0,
+            "productId": null,
+            "dataOverageType": 0,
+            "activeFrom": "2026-02-17T00:00:00+00:00"
+          }
+        ],
+        "startDate": "2026-02-17T00:00:00+00:00",
+        "endDate": "2026-03-17T00:00:00+00:00",
+        "totalAmountGB": 91.21203637299999,
+        "dailyData": [
+          [
+            2.567567606
+          ],
+          [
+            7.13055457
+          ],
+          [
+            3.878634534
+          ],
+          [
+            4.998598503
+          ],
+          [
+            2.079006415
+          ],
+          [
+            4.958014205
+          ],
+          [
+            1.9108147240000002
+          ],
+          [
+            5.093380485
+          ],
+          [
+            3.409195436
+          ],
+          [
+            2.9572959
+          ],
+          [
+            4.015278144
+          ],
+          [
+            3.896338654
+          ],
+          [
+            2.522802704
+          ],
+          [
+            6.659457926999999
+          ],
+          [
+            2.3177222239999997
+          ],
+          [
+            2.377118745
+          ],
+          [
+            4.612500595999999
+          ],
+          [
+            2.177162016
+          ],
+          [
+            3.507094768
+          ],
+          [
+            2.799064638
+          ],
+          [
+            3.199484756
+          ],
+          [
+            2.246918936
+          ],
+          [
+            1.2531587929999999
+          ],
+          [
+            1.890095451
+          ],
+          [
+            3.466336574
+          ],
+          [
+            0.902562904
+          ],
+          [
+            1.862059414
+          ],
+          [
+            2.523816751
+          ]
+        ]
+      },
+      {
+        "dataUsageSummaryLines": [
+          {
+            "isOptedIntoOverage": false,
+            "name": "",
+            "description": "",
+            "dataBucketIndex": 0,
+            "isoCurrencyCode": "PHP",
+            "overageLineDeactivatedDate": null,
+            "summaryLineType": 6,
+            "restricted": 0,
+            "unrestricted": 0,
+            "pricePerGB": 0,
+            "usageLimitGB": 0,
+            "overageAmountGB": 0,
+            "consumedAmountGB": 450.67,
+            "overagePrice": 0,
+            "productId": null,
+            "dataOverageType": 0,
+            "activeFrom": "2026-03-17T00:00:00+00:00"
+          }
+        ],
+        "startDate": "2026-03-17T00:00:00+00:00",
+        "endDate": "2026-04-17T00:00:00+00:00",
+        "totalAmountGB": 450.6678034920001,
+        "dailyData": [
+          [
+            5.7841628279999995
+          ],
+          [
+            5.5124074069999995
+          ],
+          [
+            5.96781261
+          ],
+          [
+            2.593808643
+          ],
+          [
+            7.546005525
+          ],
+          [
+            13.007359787
+          ],
+          [
+            12.429271951
+          ],
+          [
+            8.726167262
+          ],
+          [
+            14.522184591999999
+          ],
+          [
+            10.949106667999999
+          ],
+          [
+            14.947986553
+          ],
+          [
+            7.090461563
+          ],
+          [
+            15.590903381
+          ],
+          [
+            13.622317635
+          ],
+          [
+            14.615622694999999
+          ],
+          [
+            30.233958349999998
+          ],
+          [
+            18.769100298
+          ],
+          [
+            23.013865314
+          ],
+          [
+            25.732470352
+          ],
+          [
+            25.512005074
+          ],
+          [
+            33.006040579
+          ],
+          [
+            21.205379414
+          ],
+          [
+            16.840157735
+          ],
+          [
+            16.900029873999998
+          ],
+          [
+            12.684959487
+          ],
+          [
+            4.609487109
+          ],
+          [
+            10.371860957
+          ],
+          [
+            16.481468446
+          ],
+          [
+            14.237302471
+          ],
+          [
+            16.633935893
+          ],
+          [
+            11.530203039
+          ]
+        ]
+      },
+      {
+        "dataUsageSummaryLines": [
+          {
+            "isOptedIntoOverage": false,
+            "name": "",
+            "description": "",
+            "dataBucketIndex": 0,
+            "isoCurrencyCode": "PHP",
+            "overageLineDeactivatedDate": null,
+            "summaryLineType": 6,
+            "restricted": 0,
+            "unrestricted": 0,
+            "pricePerGB": 0,
+            "usageLimitGB": 0,
+            "overageAmountGB": 0,
+            "consumedAmountGB": 458.66,
+            "overagePrice": 0,
+            "productId": null,
+            "dataOverageType": 0,
+            "activeFrom": "2026-04-17T00:00:00+00:00"
+          }
+        ],
+        "startDate": "2026-04-17T00:00:00+00:00",
+        "endDate": "2026-05-17T00:00:00+00:00",
+        "totalAmountGB": 458.6613901509999,
+        "dailyData": [
+          [
+            22.753233105
+          ],
+          [
+            18.509884057
+          ],
+          [
+            9.446899451999998
+          ],
+          [
+            16.460725164
+          ],
+          [
+            14.145435855999999
+          ],
+          [
+            17.33246762
+          ],
+          [
+            16.05973454
+          ],
+          [
+            19.518272562
+          ],
+          [
+            16.430066766
+          ],
+          [
+            20.511094261
+          ],
+          [
+            12.190308252000001
+          ],
+          [
+            13.234557502
+          ],
+          [
+            14.069552021
+          ],
+          [
+            9.572620301
+          ],
+          [
+            12.046356266
+          ],
+          [
+            14.569530156
+          ],
+          [
+            12.872703682000001
+          ],
+          [
+            12.627637929
+          ],
+          [
+            7.109937929
+          ],
+          [
+            8.529740610000001
+          ],
+          [
+            19.441263638000002
+          ],
+          [
+            15.394544909
+          ],
+          [
+            13.535536059
+          ],
+          [
+            4.946175686
+          ],
+          [
+            17.26751974
+          ],
+          [
+            21.645971951
+          ],
+          [
+            21.418984693
+          ],
+          [
+            5.8951000790000005
+          ],
+          [
+            22.345347811
+          ],
+          [
+            28.780187554
+          ]
+        ]
+      },
+      {
+        "dataUsageSummaryLines": [
+          {
+            "isOptedIntoOverage": false,
+            "name": "",
+            "description": "",
+            "dataBucketIndex": 0,
+            "isoCurrencyCode": "PHP",
+            "overageLineDeactivatedDate": null,
+            "summaryLineType": 6,
+            "restricted": 0,
+            "unrestricted": 0,
+            "pricePerGB": 0,
+            "usageLimitGB": 0,
+            "overageAmountGB": 0,
+            "consumedAmountGB": 97.44,
+            "overagePrice": 0,
+            "productId": null,
+            "dataOverageType": 0,
+            "activeFrom": "2026-05-17T00:00:00+00:00"
+          }
+        ],
+        "startDate": "2026-05-17T00:00:00+00:00",
+        "endDate": "2026-06-17T00:00:00+00:00",
+        "totalAmountGB": 97.44208465999999,
+        "dailyData": [
+          [
+            45.093977717
+          ],
+          [
+            9.833913059
+          ],
+          [
+            16.018512593
+          ],
+          [
+            18.105064329
+          ],
+          [
+            8.390616962
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ]
+      }
+    ],
+    "servicePlan": {
+      "isoCurrencyCode": "PHP",
+      "isMobilePlan": false,
+      "activeFrom": "2023-08-01T11:36:33.543341+00:00",
+      "subscriptionActiveFrom": "2023-08-17T12:12:57.684072+00:00",
+      "subscriptionEndDate": null,
+      "overageName": null,
+      "overageDescription": null,
+      "isOptedIntoOverage": false,
+      "overageLineDeactivatedDate": null,
+      "overageLine": null,
+      "dataPoolUsage": null,
+      "productId": "ph-consumer-subscription",
+      "usageLimitGB": 100000,
+      "dataCategoryMapping": {}
+    }
+  },
+  "errors": [],
+  "warnings": [],
+  "information": [],
+  "isValid": true
+}

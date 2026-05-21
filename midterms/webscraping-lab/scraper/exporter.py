@@ -1,19 +1,22 @@
 from __future__ import annotations
 
+import csv
+from pathlib import Path
 from typing import Iterable
 
-import pandas as pd
+from .usage_page import UsageRecord
 
 
-def export_to_csv(records: Iterable[dict[str, str]], output_path: str) -> None:
-    data = list(records)
-    if not data:
-        raise ValueError("No records to export.")
+def export_to_csv(records: Iterable[UsageRecord], output_csv: str) -> str:
+    """Write usage records to CSV and return the file path."""
 
-    for record in data:
-        if "Date" not in record or "Data_Usage" not in record:
-            raise ValueError("Records must include Date and Data_Usage keys.")
+    output_path = Path(output_csv)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    df = pd.DataFrame(data)
-    df = df[["Date", "Data_Usage"]]
-    df.to_csv(output_path, index=False)
+    with output_path.open("w", newline="", encoding="utf-8") as file_handle:
+        writer = csv.writer(file_handle)
+        writer.writerow(["Date", "Data_Usage"])
+        for record in records:
+            writer.writerow([record.date, record.usage])
+
+    return str(output_path)
