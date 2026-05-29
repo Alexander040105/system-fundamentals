@@ -1,0 +1,281 @@
+2811 router -> switch -> 2 IP Phones(straight through cable wire) 
+IP Phone 0 fa0/2
+IP Phone 2 fa0/3
+IP Phone 1 fa0/4
+Router fa0/1 to fa0/0
+
+SWITCH CONFIGURATION SA CLI:
+
+enable
+conf t
+vlan 10
+name DATA
+vlan 20
+name VOICE
+vlan 30
+name MGT
+vlan 40
+name MISC
+vlan 50 
+name NATIVE
+exit
+
+skip this:
+int fa0/1
+swtichport mode trunk
+switchport native vlan 50
+exit 
+
+
+int range fa0/2-4
+switchport mode access
+switchport access vlan 10
+switchport voice vlan 20
+exit
+int range fa0/5-24
+switchport mode access 
+switchport access vlan 40
+shut
+
+
+
+int range gi0/1-gi0/2
+switchport mode access
+switchport access vlan 40
+shut
+
+do sho vlan bri
+
+
+
+ROUTER CONFIG NA:\
+en
+conf t
+int fa0/0.10
+encap
+encapsulation dot
+encapsulation dot1Q 10
+ip add 192.168.10.1 255.255.255.0
+exit
+
+int fa0/0.20
+encap 
+encapsulation do 
+encapsulation dot1Q 20
+ip add 192.168.20.1 255.255.255.0
+exit
+
+int fa0/0.50
+encap -- press tab instead of enter
+encapsulation do
+encapsulation dot1Q 50 native
+exit
+
+ip dhcp
+ip dhcp excluded-address 192.168.10.1 192.168.10.5
+ip dhcp excluded-address 192.168.20.1 192.168.20.5
+ip dhcp pool DATA10
+network 192.168.10.0 255.255.255.0
+default
+default-router 192.168.10.1
+exit
+
+ip dhcp pool VOICE20
+network 192.168.20.0 255.255.255.0
+def
+default-router 192.168.20.1
+exit
+
+tele 
+telephony-service
+max-dn 3
+max-ephones 3
+ip source-address 192.168.20.1 port 2000
+ephone-dn 1
+
+
+
+
+
+CLAUDEEE
+
+
+
+
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#
+Router(config-ephone)#e
+Router(config)#telephon
+Router(config-telephony)#telephony-service
+Router(config-telephony)#max-dn 3
+Router(config-telephony)#max-ephones 3
+Router(config-telephony)#ip sour
+% Incomplete command.
+Router(config-telephony)#ip sour
+Router(config-telephony)#ip source-address 192.168.20.1 port 2000
+Router(config-telephony)#ephone-dn 1
+Router(config-ephone-dn)#number 1010
+Router(config-ephone-dn)#ephone-dn 2
+Router(config-ephone-dn)#number 1020
+Router(config-ephone-dn)#ephone-dn 3
+Router(config-ephone-dn)#number 1030
+Router(config-ephone-dn)#exit
+Router(config)#telephon
+Router(config-telephony)#telephony-service
+Router(config-telephony)#max-dn 3
+Router(config-telephony)#max-ephones 3
+Router(config-telephony)#ip sour
+Router(config-telephony)#ip source-address 192.168.20.1 port 2000
+Router(config-telephony)#auto assign 1 to 5
+Router(config-telephony)#ephone-dn 1
+Router(config-ephone-dn)#number 1010
+Router(config-ephone-dn)#ephone-dn 2
+Router(config-ephone-dn)#number 1020
+Router(config-ephone-dn)#ephone-dn 3 number 1030
+                          ^
+% Invalid input detected at '^' marker.
+	
+Router(config-ephone-dn)#ephone-dn 3
+Router(config-ephone-dn)#number 1030
+Router(config-ephone-dn)#exit
+Router(config)#ephone 1
+Router(config-ephone)#type 7960
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#no mac address
+Router(config-ephone)#
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#
+Router#en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#ephone-dn 1
+Router(config-ephone-dn)#no mac-address
+                            ^
+% Invalid input detected at '^' marker.
+	
+Router(config-ephone-dn)#e
+Router(config)#ephone 1
+Router(config-ephone)#Router(config)#ephone 1
+                      ^
+% Invalid input detected at '^' marker.
+	
+Router(config-ephone)#Router(config-ephone)#no mac-address         hyphen, not space
+                      ^
+% Invalid input detected at '^' marker.
+	
+Router(config-ephone)#Router(config-ephone)#type 7960
+                      ^
+% Invalid input detected at '^' marker.
+	
+Router(config-ephone)#Router(config-ephone)#button 1:1
+                      ^
+% Invalid input detected at '^' marker.
+	
+Router(config-ephone)#
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#ephone 1
+Router(config-ephone)#no mac-address
+Router(config-ephone)#type 7960
+Router(config-ephone)#button 1:1
+Need to configure ephone mac address or VM station-id
+Router(config-ephone)#no mac-address
+Router(config-ephone)#no mac-address
+Router(config-ephone)#
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#ephone 1
+Router(config-ephone)#no mac-address
+Router(config-ephone)#type 7960
+Router(config-ephone)#button 1:1
+Need to configure ephone mac address or VM station-id
+Router(config-ephone)#no mac-address
+Router(config-ephone)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int fa0/0
+Router(config-if)#no shutdown
+
+Router(config-if)#exit
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+
+%LINK-5-CHANGED: Interface FastEthernet0/0.10, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0.10, changed state to up
+
+%LINK-5-CHANGED: Interface FastEthernet0/0.20, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0.20, changed state to up
+
+%LINK-5-CHANGED: Interface FastEthernet0/0.50, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0.50, changed state to up
+
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#en 
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#ephone 1
+Router(config-ephone)#no mac-address
+Router(config-ephone)#type 7960
+Router(config-ephone)#button 1:1
+Need to configure ephone mac address or VM station-id
+Router(config-ephone)#E
+Router(config)#ephone 1
+Router(config-ephone)#no mac-address
+Router(config-ephone)#type 7960
+Router(config-ephone)#button 1:1
+Need to configure ephone mac address or VM station-id
+Router(config-ephone)#e
+Router(config)#e
+% Ambiguous command: "e"
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#ip dhcp pool VOICE20
+Router(dhcp-config)#option 150 ip 192.168.20.1
+Router(dhcp-config)#exit
+Router(config)#
+%IPPHONE-6-REGISTER: ephone-1 IP:192.168.20.6 Socket:2 DeviceType:Phone has registered.
+
+%IPPHONE-6-REGISTER: ephone-2 IP:192.168.20.7 Socket:2 DeviceType:Phone has registered.
+
+%IPPHONE-6-REGISTER: ephone-3 IP:192.168.20.8 Socket:2 DeviceType:Phone has registered.
