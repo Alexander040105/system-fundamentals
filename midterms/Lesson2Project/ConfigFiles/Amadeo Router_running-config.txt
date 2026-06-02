@@ -1,0 +1,116 @@
+!
+version 12.4
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router
+!
+!
+!
+!
+!
+ip dhcp pool AMA
+ network 192.168.2.0 255.255.255.0
+ default-router 192.168.2.1
+ option 150 ip 192.168.2.1
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/0
+ ip address 172.16.0.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface FastEthernet0/1
+ ip address 192.168.2.1 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ no ip address
+ duplex auto
+ speed auto
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+router ospf 10
+ log-adjacency-changes
+ network 192.168.2.0 0.0.0.255 area 0
+ network 172.16.0.0 0.0.0.3 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+dial-peer voice 10 voip
+ destination-pattern 1...
+ session target ipv4:172.16.0.1
+!
+telephony-service
+ max-ephones 2
+ max-dn 2
+ ip source-address 192.168.2.1 port 2000
+ auto assign 1 to 2
+!
+ephone-dn 1
+ number 2001
+!
+ephone-dn 2
+ number 2002
+!
+ephone 1
+ device-security-mode none
+ mac-address 00D0.580D.BE2B
+ type 7960
+ button 1:1
+!
+ephone 2
+ device-security-mode none
+ mac-address 0006.2A3B.0554
+ type 7960
+ button 1:2
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
+
