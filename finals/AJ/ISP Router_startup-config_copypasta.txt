@@ -14,20 +14,20 @@ ip dhcp excluded-address 10.1.20.1 10.1.20.9
 ip dhcp excluded-address 10.0.30.1 10.0.30.9
 ip dhcp excluded-address 10.0.40.1 10.0.40.9
 !
-ip dhcp pool AMADEO_DATA
+ip dhcp pool TAGS_DATA
  network 10.1.10.0 255.255.255.0
  default-router 10.1.10.1
  dns-server 151.101.1.143
-ip dhcp pool AMADEO_VOICE
+ip dhcp pool TAGS_VOICE
  network 10.1.20.0 255.255.255.0
  default-router 10.1.20.1
  option 150 ip 10.50.99.1
  dns-server 151.101.1.143
-ip dhcp pool TAGAYTAY_DATA
+ip dhcp pool AMADEO_DATA
  network 10.0.30.0 255.255.255.0
  default-router 10.0.30.1
  dns-server 151.101.1.143
-ip dhcp pool TAGAYTAY_VOICE
+ip dhcp pool AMADEO_VOICE
  network 10.0.40.0 255.255.255.0
  default-router 10.0.40.1
  option 150 ip 10.50.99.1
@@ -200,6 +200,7 @@ telephony-service
  max-dn 20
  ip source-address 10.50.99.1 port 2000
  auto assign 1 to 20
+ create cnf-files version-stamp Jan 01 2002 00:00:00
 !
 ephone-dn 1
  number 1001
@@ -208,52 +209,34 @@ ephone-dn 2
  number 1002
 !
 ephone-dn 3
- number 1003
-!
-ephone-dn 4
  number 2001
 !
-ephone-dn 5
+ephone-dn 4
  number 2002
-!
-ephone-dn 6
- number 2003
 !
 ephone 1
  device-security-mode none
- mac-address 0002.1731.2528
- type 7960
- button 1:5
-!
-ephone 2
- device-security-mode none
- mac-address 00E0.B006.49A6
- type 7960
- button 1:4
-!
-ephone 3
- device-security-mode none
- mac-address 0030.F256.E455
- type 7960
- button 1:2
-!
-ephone 4
- device-security-mode none
- mac-address 0001.4232.1EC2
- type 7960
- button 1:3
-!
-ephone 5
- device-security-mode none
- mac-address 0050.0FE2.E2A7
+ mac-address 0090.2B93.5816
  type 7960
  button 1:1
 !
-ephone 6
+ephone 2
  device-security-mode none
- mac-address 0001.6329.6934
+ mac-address 000C.8567.548E
  type 7960
- button 1:6
+ button 1:2
+!
+ephone 3
+ device-security-mode none
+ mac-address 00D0.580D.BE2B
+ type 7960
+ button 1:3
+!
+ephone 4
+ device-security-mode none
+ mac-address 0006.2A3B.0554
+ type 7960
+ button 1:4
 !
 line con 0
 !

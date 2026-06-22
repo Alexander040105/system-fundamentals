@@ -1,0 +1,33 @@
+Amadeo = HOTEL1
+Tagaytay = HOTEL2
+
+ISP Router to Amadeo = Gig0/2/0 -> Gig0/3/0
+ISP Router to Tagaytay = Gig0/3/0 -> Gig0/3/0
+
+ISP Config files done
+
+Amadeo Router to Amadeo Switch = Gig0/0 -> Fa0/19
+Amadeo Router Config files Done
+
+Tagaytay Router
+Tagaytay Router to Amadeo Switch = Gig0/0 -> Fa0/19
+Tagaytay Router Config files Done
+
+
+Amadeo Switch Config File Done
+IP Phones Interfaces(LOUE): Fa1, Fa3, Fa7
+IP Phones Interfaces(MINE): Fa17, Fa18
+
+Tagaytay Switch Config File Done
+
+ISP Switch
+
+Warehouse facility site - FA1/1 IP - 52.5.196.34 255.0.0.0  Def G - 151.101.0.1
+YT - FA2/1 IP - 142.251.220.206 255.255.0.0  Def G - 151.101.0.1
+Github - FA3/1 IP - 20.205.243.166 255.0.0.0  Def G - 151.101.0.1
+Tiktok - FA4/1 IP - 1.37.93.202 255.0.0.0  Def G - 151.101.0.1
+Facebook - FA5/1 IP - 163.70.131.35 255.255.0.0  Def G - 151.101.0.1
+Cisco - FA9/1 IP - 72.163.4.185 255.0.0.0  Def G - 151.101.0.1
+Microsoft - FA8/1 IP - 13.107.213.59 255.0.0.0  Def G - 151.101.0.1
+Starlink(DHCP din i2)- FA7/1 IP - 151.101.1.143 255.255.0.0  Def G - 151.101.0.1
+perpetual - FA6/1 IP - 121.58.199.142 255.0.0.0  Def G - 151.101.0.1
