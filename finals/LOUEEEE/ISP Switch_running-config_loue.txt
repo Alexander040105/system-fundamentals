@@ -1,0 +1,86 @@
+!
+version 12.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+!
+!
+ptp clock transparent domain 0 profile default
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ description LINK_TO_ISP_ROUTER
+ switchport trunk allowed vlan 100,110,120,130,140,150,160,170,180
+ switchport mode trunk
+!
+interface FastEthernet1/1
+ description WEB1
+ switchport access vlan 100
+ switchport mode access
+!
+interface FastEthernet2/1
+ description WEB2
+ switchport access vlan 110
+ switchport mode access
+!
+interface FastEthernet3/1
+ description WEB3
+ switchport access vlan 120
+ switchport mode access
+!
+interface FastEthernet4/1
+ description WEB4
+ switchport access vlan 130
+ switchport mode access
+!
+interface FastEthernet5/1
+ description WEB5
+ switchport access vlan 140
+ switchport mode access
+!
+interface FastEthernet6/1
+ description WEB6
+ switchport access vlan 150
+ switchport mode access
+!
+interface FastEthernet7/1
+ description WEB7_DNS
+ switchport access vlan 160
+ switchport mode access
+!
+interface FastEthernet8/1
+ description WEB8
+ switchport access vlan 170
+ switchport mode access
+!
+interface FastEthernet9/1
+ description WEB9
+ switchport access vlan 180
+ switchport mode access
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+!
+!
+!
+line con 0
+!
+line vty 0 4
+ login
+line vty 5 15
+ login
+!
+!
+!
+!
+end
+
